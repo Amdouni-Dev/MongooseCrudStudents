@@ -42,3 +42,14 @@ exports.deleteStudent = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+ // Get studentBy ID
+exports.getStByID = async (req, res) => {
+
+  try {
+    const id=req.params.id
+    const student=await Student.findById(id)
+    res.status(200).json(student)
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
